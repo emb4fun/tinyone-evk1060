@@ -1,0 +1,172 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="evk1060-boot-sd" target="8" version="2">
+  <configuration Name="Debug" hidden="Yes" />
+  <configuration Name="Flash" hidden="Yes" />
+  <configuration Name="Flash Debug" inherited_configurations="Flash;Debug" />
+  <configuration
+    Name="Flash Release"
+    inherited_configurations="Flash;Release" />
+  <configuration Name="Release" hidden="Yes" />
+  <configuration Name="TCM" hidden="Yes" />
+  <configuration Name="TCM Debug" inherited_configurations="TCM;Debug" />
+  <configuration Name="TCM Release" inherited_configurations="TCM;Release" />
+  <project Name="evk1060-boot-sd">
+    <configuration
+      JLinkScriptFileName="$(ProjectDir)/evkmimxrt1060_sdram_init.jlinkscript"
+      Name="Common"
+      Placement="RAM"
+      Target="MIMXRT1062CVL5A"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M7"
+      arm_endian="Little"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv5-D16"
+      arm_interwork="No"
+      arm_linker_heap_size="256"
+      arm_linker_process_stack_size="2048"
+      arm_linker_stack_size="2048"
+      arm_simulator_memory_simulation_parameter="RAM;0x00000000;0x00020000;RAM;0x20000000;0x00020000;RAM;0x20200000;0x000C0000"
+      arm_target_debug_interface_type="ADIv5"
+      arm_target_device_name="MIMXRT1062xxx5A"
+      arm_target_interface_type="SWD"
+      build_intermediate_directory="$(Configuration)"
+      build_output_directory="$(Configuration)"
+      c_preprocessor_definitions="INITIALIZE_STACK;OSCILLATOR_CLOCK_FREQUENCY=24000000;CPU_MIMXRT1062CVL5A;MIMXRT1062xxxxx;__MIMXRT1062_FAMILY;ARM_MATH_CM7;RTOS_TCTS;USE_BOARD_RT1060EVK;SKIP_SYSCLK_INIT;FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1;SD_ENABLED"
+      c_user_include_directories="..\\library\\tcts\\inc;..\\library\\tal_rt1060evk\\board\\rt1060evk\\inc;..\\library\\tal_rt1060evk\\core\\inc;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\cmsis\\core;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\cmsis\\device;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\drivers;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\inc;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\components\\lists;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\components\\osa;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\components\\gpio;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\components\\silicon_id;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\middleware\\sdmmc\\common;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\middleware\\sdmmc\\host\\usdhc;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\middleware\\sdmmc\\osa;..\\library\\tal_rt1060evk\\cpu\\nxp\\imxrt1060\\sdk\\v2121\\middleware\\sdmmc\\sd;..\\library\\fatfs\\src;..\\library\\adler32;..\\inc"
+      debug_register_definition_file="$(ProjectDir)/MIMXRT1062_Registers.xml"
+      debug_target_connection="J-Link"
+      gcc_entry_point="reset_handler"
+      linker_memory_map_file="$(ProjectDir)/MIMXRT1062CVL5A_MemoryMap.xml"
+      linker_printf_fmt_level="long"
+      linker_printf_fp_enabled="Float"
+      linker_printf_width_precision_supported="Yes"
+      linker_section_placement_file="$(ProjectDir)/ram_placement.xml"
+      project_type="Executable"
+      target_reset_script="Reset();"
+      target_script_file="$(ProjectDir)/MIMXRT1062_Target.js"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <configuration Name="Debug" c_preprocessor_definitions="DEBUG=1" />
+    <configuration
+      Name="Flash"
+      c_preprocessor_definitions="__FLASH__;VECTORS_IN_RAM;XIP_EXTERNAL_FLASH=1;XIP_BOOT_HEADER_ENABLE=1;XIP_BOOT_HEADER_DCD_ENABLE=1"
+      linker_output_format="hex"
+      linker_section_placement_file="$(ProjectDir)/flash_placement.xml" />
+    <configuration
+      Name="Flash Release"
+      c_preprocessor_definitions="ENABLED_WDOG" />
+    <configuration
+      Name="Release"
+      gcc_debugging_level="Level 2"
+      gcc_optimization_level="Level 3" />
+    <configuration
+      Name="TCM"
+      c_preprocessor_definitions="__TCM__"
+      linker_section_placement_file="$(ProjectDir)/tcm_placement.xml" />
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <folder Name="library">
+        <folder Name="adler32">
+          <file file_name="../library/adler32/adler32.c" />
+        </folder>
+        <folder Name="fatfs">
+          <file file_name="../library/fatfs/src/ff.c" />
+          <file file_name="../library/fatfs/src/ffunicode.c" />
+        </folder>
+        <folder Name="tal">
+          <folder Name="board">
+            <folder Name="xip">
+              <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/xip/dcd.c" />
+              <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/xip/evkbmimxrt1060_flexspi_nor_config.c" />
+              <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/xip/fsl_flexspi_nor_boot.c" />
+            </folder>
+            <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/board.c" />
+            <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/clock_config.c" />
+            <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/fatfs_diskio.c" />
+            <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/pin_mux.c" />
+            <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/sdmmc_config.c" />
+            <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/talboard.c" />
+            <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/talgpio.c" />
+            <file file_name="../library/tal_rt1060evk/board/rt1060evk/src/talled.c" />
+          </folder>
+          <folder Name="core">
+            <file file_name="../library/tal_rt1060evk/core/src/tal.c" />
+            <file file_name="../library/tal_rt1060evk/core/src/talcom.c" />
+            <file file_name="../library/tal_rt1060evk/core/src/taldebug.c" />
+            <file file_name="../library/tal_rt1060evk/core/src/talmem.c" />
+            <file file_name="../library/tal_rt1060evk/core/src/talmisc.c" />
+          </folder>
+          <folder Name="cpu">
+            <folder Name="sdk">
+              <folder Name="cmsis">
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/cmsis/device/system_MIMXRT1062.c">
+                  <configuration
+                    Name="Common"
+                    default_code_section=".init"
+                    default_const_section=".init_rodata" />
+                </file>
+              </folder>
+              <folder Name="components">
+                <folder Name="gpio">
+                  <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/components/gpio/fsl_adapter_igpio.c" />
+                </folder>
+              </folder>
+              <folder Name="drivers">
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/drivers/fsl_cache.c" />
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/drivers/fsl_clock.c" />
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/drivers/fsl_common.c" />
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/drivers/fsl_gpio.c" />
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/drivers/fsl_lpi2c.c" />
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/drivers/fsl_lpuart.c" />
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/drivers/fsl_usdhc.c" />
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/drivers/fsl_wdog.c" />
+              </folder>
+              <folder Name="osa_port">
+                <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/osa_port/fsl_os_abstraction_tcts.c" />
+              </folder>
+              <folder Name="sdmmc">
+                <folder Name="common">
+                  <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/middleware/sdmmc/common/fsl_sdmmc_common.c" />
+                </folder>
+                <folder Name="host">
+                  <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/middleware/sdmmc/host/usdhc/non_blocking/fsl_sdmmc_host.c" />
+                </folder>
+                <folder Name="osa">
+                  <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/middleware/sdmmc/osa/fsl_sdmmc_osa.c" />
+                </folder>
+                <folder Name="sd">
+                  <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/sdk/v2121/middleware/sdmmc/sd/fsl_sd.c" />
+                </folder>
+              </folder>
+            </folder>
+            <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/src/talcpu.c" />
+            <file file_name="../library/tal_rt1060evk/cpu/nxp/imxrt1060/src/talcpu_com.c" />
+          </folder>
+        </folder>
+        <folder Name="tcts">
+          <file file_name="../library/tcts/src/tcts.c" />
+        </folder>
+      </folder>
+      <folder Name="src">
+        <file file_name="../src/main.c" />
+        <file file_name="../src/terminal.c" />
+        <file file_name="../src/xmempool.c" />
+      </folder>
+    </folder>
+    <folder Name="System Files">
+      <file file_name="MIMXRT1062_Startup.s">
+        <configuration
+          Name="Flash"
+          c_preprocessor_definitions="__RAM_segment_end__=__DTCM_segment_end__" />
+        <configuration
+          Name="TCM"
+          c_preprocessor_definitions="__RAM_segment_end__=__DTCM_segment_end__" />
+      </file>
+      <file file_name="MIMXRT1062_Vectors.s">
+        <configuration Name="Common" file_type="Assembly" />
+      </file>
+      <file file_name="SEGGER_HardFaultHandler.c" />
+      <file file_name="SEGGER_HardFault_Handler.s" />
+      <file file_name="thumb_crt0.s" />
+    </folder>
+  </project>
+</solution>

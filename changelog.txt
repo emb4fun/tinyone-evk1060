@@ -1,0 +1,20 @@
+***************************************************************************
+* Project: tinyone-evk1060
+* Name   : "A small embedded DHCP and SNTP server"
+* Target : i.MX RT1060 Evaluation Kit
+* Version: 20230312
+***************************************************************************
+* Tools  : SEGGER Embedded Studio for ARM v7.12
+*          NXP MIMXRT1062 CPU Support Package v2.06
+***************************************************************************
+* URL    : https://www.emb4fun.de/projects/tone/index.html
+***************************************************************************
+* Note:  : The configuration "SDRAM Release" must be used for a release
+*          version.
+***************************************************************************
+
+= Version 1.10 / 1.10, 12.03.2023
+   * First version for GitHub.
+   * Based on tinyone-ea1062 11.03.2023
+
+***************************************************************************
