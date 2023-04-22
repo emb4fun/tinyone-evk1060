@@ -2,7 +2,7 @@
 * Project: tinyone-evk1060
 * Name   : "A small embedded DHCP and SNTP server"
 * Target : i.MX RT1060 Evaluation Kit
-* Version: 20230312
+* Version: 20230422
 ***************************************************************************
 * Tools  : SEGGER Embedded Studio for ARM v7.12
 *          NXP MIMXRT1062 CPU Support Package v2.06
@@ -12,6 +12,10 @@
 * Note:  : The configuration "SDRAM Release" must be used for a release
 *          version.
 ***************************************************************************
+
+= 22.04.2023
+   * Updated MbedTLS to v2.28.3
+   * Used SEGGER Embedded Studio for ARM v7.12a.
 
 = Version 1.10 / 1.10, 12.03.2023
    * First version for GitHub.
